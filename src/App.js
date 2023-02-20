@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./Components/Home";
+import Orders from "./Global_State_variables_and their_functions/Orders";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import Addorder from "./Components/Addorder";
+import Tyredetails from "./Global_State_variables_and their_functions/Tyredetails";
+import Addtyre from "./Components/Addtyre";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Tyredetails>
+          <Orders>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/addorder" element={<Addorder />} />
+              <Route exact path="/addtyre" element={<Addtyre/>} />
+            </Routes>
+          </Orders>
+        </Tyredetails>
+      </Router>
+    </>
   );
 }
 
